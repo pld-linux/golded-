@@ -37,11 +37,7 @@ install bin/gedlnx	$RPM_BUILD_ROOT%{_bindir}/golded
 install bin/gnlnx	$RPM_BUILD_ROOT%{_bindir}/goldnode
 install bin/rddtlnx	$RPM_BUILD_ROOT%{_bindir}/rddt
 
-gzip -9nf docs/*.1
-install docs/*.1.gz	$RPM_BUILD_ROOT%{_mandir}/man1
-
-gzip -9nf docs/*.txt
-gzip -9nf docs/StyleGuide
+install docs/*.1	$RPM_BUILD_ROOT%{_mandir}/man1
 
 install cfgs/charset/*.chs $RPM_BUILD_ROOT%{_libdir}/golded/charset
 install cfgs/charset/*.esc $RPM_BUILD_ROOT%{_libdir}/golded/charset
@@ -61,7 +57,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/goldnode
 %attr(755,root,root) %{_bindir}/rddt
 %{_mandir}/man1/*
-%doc docs/*.txt.gz docs/StyleGuide.gz
+%doc docs/*.txt docs/StyleGuide
 %{_libdir}/golded/charset/*
 %{_libdir}/golded/colorset/*
 %{_libdir}/golded/config*
