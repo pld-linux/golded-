@@ -2,7 +2,7 @@ Summary:	golded - offline message reader for Fidonet and Usenet
 Summary(pl):	golded - program pocztowy dla Fidonetu i Usenetu
 Name:		golded+
 Version:	1.1.4.7
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications/Mail
 Source0:	http://dl.sourceforge.net/golded-plus/gps114-7.tar.bz2
