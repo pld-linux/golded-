@@ -5,7 +5,7 @@ Version:	1.1.4.7
 Release:	2
 License:	GPL
 Group:		Applications/Mail
-Source0:	http://download.sourceforge.net/golded-plus/gps114-7.tar.bz2
+Source0:	http://dl.sourceforge.net/golded-plus/gps114-7.tar.bz2
 # Source0-md5:	0bb9d4b9be90630e4ea87a3928f047a4
 Patch0:		golded-ncurses.patch
 Patch1:		golded-header.patch
