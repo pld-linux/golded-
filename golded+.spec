@@ -11,8 +11,8 @@ Patch0:		golded-ncurses.patch
 Patch1:		golded-header.patch
 URL:		http://golded-plus.sourceforge.net/
 BuildRequires:	gcc-c++
-BuildRequires:  libstdc++-devel
-BuildRequires:  ncurses-devel
+BuildRequires:	libstdc++-devel
+BuildRequires:	ncurses-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
