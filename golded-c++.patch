@@ -1,0 +1,1041 @@
+diff -ur golded+.orig/golded3/gcarea.cpp golded+/golded3/gcarea.cpp
+--- golded+.orig/golded3/gcarea.cpp	Thu May 11 17:04:44 2000
++++ golded+/golded3/gcarea.cpp	Sat Aug 30 17:34:38 2003
+@@ -27,6 +27,9 @@
+ #include <golded.h>
+ #include <gmoprot.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Fix up the echoid and make default if none specified
+diff -ur golded+.orig/golded3/gccfgg.cpp golded+/golded3/gccfgg.cpp
+--- golded+.orig/golded3/gccfgg.cpp	Fri Oct 20 13:14:12 2000
++++ golded+/golded3/gccfgg.cpp	Sat Aug 30 17:34:38 2003
+@@ -27,6 +27,10 @@
+ #include <golded.h>
+ #include <gmoprot.h>
+ 
++using std::cout;
++using std::endl;
++using std::flush;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/golded3/gccfgg0.cpp golded+/golded3/gccfgg0.cpp
+--- golded+.orig/golded3/gccfgg0.cpp	Fri Feb 25 12:03:22 2000
++++ golded+/golded3/gccfgg0.cpp	Sat Aug 30 17:34:38 2003
+@@ -28,6 +28,11 @@
+ #include <gccfgg.h>
+ #include <gcprot.h>
+ 
++using std::cout;
++using std::endl;
++using std::setw;
++using std::setfill;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/golded3/gccfgg1.cpp golded+/golded3/gccfgg1.cpp
+--- golded+.orig/golded3/gccfgg1.cpp	Fri Feb 25 12:03:22 2000
++++ golded+/golded3/gccfgg1.cpp	Sat Aug 30 17:34:38 2003
+@@ -27,6 +27,9 @@
+ #include <golded.h>
+ #include <gcprot.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/golded3/gckeys.cpp golded+/golded3/gckeys.cpp
+--- golded+.orig/golded3/gckeys.cpp	Fri Feb 25 12:03:24 2000
++++ golded+/golded3/gckeys.cpp	Sat Aug 30 17:34:38 2003
+@@ -27,6 +27,9 @@
+ #include <golded.h>
+ #include <gckeys.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/golded3/gclang.cpp golded+/golded3/gclang.cpp
+--- golded+.orig/golded3/gclang.cpp	Sun Oct 29 07:49:10 2000
++++ golded+/golded3/gclang.cpp	Sat Aug 30 17:34:38 2003
+@@ -27,6 +27,9 @@
+ #include <golded.h>
+ #include <gclang.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Structure of language crc list
+diff -ur golded+.orig/golded3/gcmisc.cpp golded+/golded3/gcmisc.cpp
+--- golded+.orig/golded3/gcmisc.cpp	Sun Oct 29 07:49:10 2000
++++ golded+/golded3/gcmisc.cpp	Sat Aug 30 17:34:38 2003
+@@ -26,6 +26,9 @@
+ 
+ #include <golded.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/golded3/gecfgg.h golded+/golded3/gecfgg.h
+--- golded+.orig/golded3/gecfgg.h	Fri Feb 25 12:04:08 2000
++++ golded+/golded3/gecfgg.h	Sat Aug 30 17:34:38 2003
+@@ -25,6 +25,10 @@
+ //  ------------------------------------------------------------------
+ 
+ #include <list>
++#include <vector>
++
++using std::list;
++using std::vector;
+ 
+ 
+ //  ------------------------------------------------------------------
+diff -ur golded+.orig/golded3/gectnr.cpp golded+/golded3/gectnr.cpp
+--- golded+.orig/golded3/gectnr.cpp	Wed Mar 22 18:59:18 2000
++++ golded+/golded3/gectnr.cpp	Sat Aug 30 17:34:38 2003
+@@ -31,12 +31,12 @@
+ 
+ inline int isstylechar(char c) { return (c == '*') or (c == '/') or (c == '_') or (c == '#'); }
+ 
+-void Container::StyleCodeHighlight(const char* text, int row, int col, bool dohide, int color) {
++void Container::StyleCodeHighlight(char* text, int row, int col, bool dohide, int color) {
+ 
+   uint sclen = 0;
+   char* txptr = text;
+   char buf[200];
+-  const char* ptr = text;
++  char* ptr = text;
+   const char* stylemargins = " -|\\";    // we probably have to make a keyword for it
+   char* punctchars = CFG->stylecodepunct;
+   char* stylestopchars = CFG->stylecodestops;
+diff -ur golded+.orig/golded3/gectnr.h golded+/golded3/gectnr.h
+--- golded+.orig/golded3/gectnr.h	Sat Jun 17 01:30:48 2000
++++ golded+/golded3/gectnr.h	Sat Aug 30 17:34:38 2003
+@@ -37,7 +37,7 @@
+ 
+   virtual ~Container() { }
+   
+-  void StyleCodeHighlight(const char* text, int row, int col, bool dohide, int color);
++  void StyleCodeHighlight(char* text, int row, int col, bool dohide, int color);
+ };
+ 
+ 
+diff -ur golded+.orig/golded3/gedoss.cpp golded+/golded3/gedoss.cpp
+--- golded+.orig/golded3/gedoss.cpp	Mon Nov  6 15:26:32 2000
++++ golded+/golded3/gedoss.cpp	Sat Aug 30 17:34:38 2003
+@@ -32,6 +32,9 @@
+ #include <gkbdunix.h>
+ #endif
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/golded3/geglob.cpp golded+/golded3/geglob.cpp
+--- golded+.orig/golded3/geglob.cpp	Mon Nov  6 15:26:32 2000
++++ golded+/golded3/geglob.cpp	Sat Aug 30 17:34:38 2003
+@@ -274,7 +274,7 @@
+   vector<Macro>::iterator m = CFG->macro.begin();
+   while(m != CFG->macro.end()) {
+     if((key == m->key) and (type == m->type)) {
+-      RunMacro(m);
++      RunMacro(&*m);
+       return true;
+     }
+     m++;
+diff -ur golded+.orig/golded3/gehdre.cpp golded+/golded3/gehdre.cpp
+--- golded+.orig/golded3/gehdre.cpp	Mon Nov 27 14:29:08 2000
++++ golded+/golded3/gehdre.cpp	Sat Aug 30 17:34:38 2003
+@@ -511,7 +511,7 @@
+       // Try to match akas with the dest address, but only if the orig address was NOT changed
+       vector<gaka>::iterator i;
+       for(i = CFG->aka.begin(); i != CFG->aka.end(); i++) {
+-        if(memcmp(&msg->orig, i, sizeof(Addr)) == 0)
++        if(memcmp(&msg->orig, &*i, sizeof(Addr)) == 0)
+           break;  // Found one of our own akas.
+       }
+ 
+diff -ur golded+.orig/golded3/geinit.cpp golded+/golded3/geinit.cpp
+--- golded+.orig/golded3/geinit.cpp	Sun Nov 12 23:34:28 2000
++++ golded+/golded3/geinit.cpp	Sat Aug 30 17:34:38 2003
+@@ -33,6 +33,9 @@
+ #include <windows.h>
+ #endif
+ 
++using std::cout;
++using std::endl;
++
+ //  ------------------------------------------------------------------
+ //  Handle commandline parameters
+ 
+diff -ur golded+.orig/golded3/gemlst.cpp golded+/golded3/gemlst.cpp
+--- golded+.orig/golded3/gemlst.cpp	Fri Feb 25 12:03:36 2000
++++ golded+/golded3/gemlst.cpp	Sat Aug 30 17:34:38 2003
+@@ -1021,7 +1021,7 @@
+     }
+ 
+     if(found and list[j].msgno != t.replyto)
+-      list.erase(&list[j]);
++      list.erase(list.begin()+j);
+ 
+     if(found or list.size() == 0)
+       list.push_back(t);
+diff -ur golded+.orig/golded3/geplay.cpp golded+/golded3/geplay.cpp
+--- golded+.orig/golded3/geplay.cpp	Sun Nov 12 23:34:28 2000
++++ golded+/golded3/geplay.cpp	Sat Aug 30 17:34:38 2003
+@@ -31,6 +31,9 @@
+ #include <gsndall.h>
+ #endif
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/golded3/gepost.cpp golded+/golded3/gepost.cpp
+--- golded+.orig/golded3/gepost.cpp	Mon Nov 27 07:15:30 2000
++++ golded+/golded3/gepost.cpp	Sat Aug 30 17:34:38 2003
+@@ -243,7 +243,7 @@
+   msg->oorig = msg->orig;
+   if(AA->isnet() and msg->orig.point) {
+     for(u = CFG->aka.begin(); u != CFG->aka.end(); u++) {
+-      if(not memcmp(u, &msg->orig, sizeof(Addr))) {
++      if(not memcmp(&*u, &msg->orig, sizeof(Addr))) {
+         // Use fakenet to everybody
+         if(u->pointnet) {
+           msg->oorig.net   = u->pointnet;  // Create fake address
+@@ -361,7 +361,7 @@
+       cmsg->oorig = cmsg->orig;
+       if(AA->isnet() and cmsg->orig.point) {
+         for(u = CFG->aka.begin(); u != CFG->aka.end(); u++) {
+-          if(not memcmp(u, &cmsg->orig, sizeof(Addr))) {
++          if(not memcmp(&*u, &cmsg->orig, sizeof(Addr))) {
+             // Use fakenet to everybody
+             if(u->pointnet) {
+               cmsg->oorig.net   = u->pointnet;  // Create fake address
+diff -ur golded+.orig/golded3/gesrch.cpp golded+/golded3/gesrch.cpp
+--- golded+.orig/golded3/gesrch.cpp	Wed Mar 22 18:59:18 2000
++++ golded+/golded3/gesrch.cpp	Sat Aug 30 17:34:38 2003
+@@ -217,7 +217,7 @@
+ 
+ bool golded_search_manager::search(GMsg* msg, bool quick, bool shortcircuit) {
+ 
+-  search_item* item = items.begin();
++  vector<search_item>::iterator item = items.begin();
+   bool exit = false;
+   bool and_cycle = false;
+   bool or_cycle = false;
+diff -ur golded+.orig/golded3/geutil2.cpp golded+/golded3/geutil2.cpp
+--- golded+.orig/golded3/geutil2.cpp	Fri Feb 25 12:04:04 2000
++++ golded+/golded3/geutil2.cpp	Sat Aug 30 17:34:38 2003
+@@ -190,9 +190,9 @@
+ 
+ int AkaMatch(ftn_addr* match, const ftn_addr* addr) {
+ 
+-  int aka;
++  int aka = 0;
+ 
+-  for(vector<AkaMatchG>::iterator am = CFG->akamatch.begin(), aka=0; am != CFG->akamatch.end(); am++, aka++) {
++  for(vector<AkaMatchG>::iterator am = CFG->akamatch.begin(); am != CFG->akamatch.end(); am++, aka++) {
+     if(addr->match(am->mask)) {
+       int akano = GetAkaNo(am->aka);
+       if(akano != -1) {
+diff -ur golded+.orig/golded3/geview.cpp golded+/golded3/geview.cpp
+--- golded+.orig/golded3/geview.cpp	Sat Jun 17 01:30:48 2000
++++ golded+/golded3/geview.cpp	Sat Aug 30 17:34:38 2003
+@@ -447,10 +447,10 @@
+   if(not SearchHighlight(line, vrow, visible_width, highlight_color)) {
+     if(line->type & GLINE_ORIG and strneql(line->txt.c_str(), " * Origin: ", 11)) {
+       vputs(vrow, 0, color, " * Origin: ");
+-      StyleCodeHighlight(line->txt.c_str()+11, vrow, 11, not AA->attr().hex() and CFG->hidestylies, color);
++      StyleCodeHighlight(const_cast<char *>(line->txt.c_str()+11), vrow, 11, not AA->attr().hex() and CFG->hidestylies, color);
+     }
+     else
+-      StyleCodeHighlight(line->txt.c_str(), vrow, 0, not AA->attr().hex() and CFG->hidestylies, color);
++      StyleCodeHighlight(const_cast<char *>(line->txt.c_str()), vrow, 0, not AA->attr().hex() and CFG->hidestylies, color);
+       int tlen = strlen(line->txt.c_str());
+       vputns(vrow, tlen, color, "", visible_width-tlen);
+   }
+diff -ur golded+.orig/goldlib/gall/gdefs.h golded+/goldlib/gall/gdefs.h
+--- golded+.orig/goldlib/gall/gdefs.h	Fri Feb 25 11:10:58 2000
++++ golded+/goldlib/gall/gdefs.h	Sat Aug 30 17:34:38 2003
+@@ -38,17 +38,6 @@
+ //  ------------------------------------------------------------------
+ //  Define portability and shorthand notation
+ 
+-#ifndef and
+-#define not      !
+-#define and      &&
+-#define or       ||
+-#endif
+-
+-#ifndef true
+-#define true  1
+-#define false 0
+-#endif
+-
+ #define NO     0
+ #define YES    1
+ #define ALWAYS 2
+diff -ur golded+.orig/goldlib/gall/geval.h golded+/goldlib/gall/geval.h
+--- golded+.orig/goldlib/gall/geval.h	Fri Feb 25 11:10:58 2000
++++ golded+/goldlib/gall/geval.h	Sat Aug 30 17:34:38 2003
+@@ -66,8 +66,8 @@
+ 
+ protected:
+ 
+-  vector<ops> ostk;
+-  vector<int> vstk;
++  std::vector<ops> ostk;
++  std::vector<int> vstk;
+ 
+   ops pop_operator();
+   int pop_value();
+@@ -81,20 +81,11 @@
+   void push_operator(ops o);
+ 
+   int evaluate_op(ops o, int y, int x);
+-  int evaluate_ops(ops* o, int* y, int* x);
+ 
+ };
+ 
+ 
+ //  ------------------------------------------------------------------
+-
+-inline int geval::evaluate_ops(ops* o, int* y, int* x) {
+-
+-  return evaluate_op(*o, *y, *x);
+-}
+-
+-
+-//  ------------------------------------------------------------------
+ //  Reverse Polish Notation expression evaluator.
+ 
+ class gevalrpn : public geval {
+diff -ur golded+.orig/goldlib/gall/gevalhum.cpp golded+/goldlib/gall/gevalhum.cpp
+--- golded+.orig/goldlib/gall/gevalhum.cpp	Fri Feb 25 11:11:58 2000
++++ golded+/goldlib/gall/gevalhum.cpp	Sat Aug 30 17:34:38 2003
+@@ -50,8 +50,8 @@
+ 
+     while(ostk.size()) {
+ 
+-      int* vptr = vstk.begin();
+-      ops* optr = ostk.begin();
++      std::vector<int>::iterator vptr = vstk.begin();
++      std::vector<ops>::iterator optr = ostk.begin();
+ 
+       while(optr < ostk.end()) {
+ 
+@@ -80,9 +80,9 @@
+ 
+         if(ostk.size()) {
+           if((*optr == negation) or (*optr == logic_not))
+-            *vptr = evaluate_ops(optr, vptr, vptr);
++            *vptr = evaluate_op(*optr, *vptr, *vptr);
+           else {
+-            *vptr = evaluate_ops(optr, vptr, vptr+1);
++            *vptr = evaluate_op(*optr, *vptr, *(vptr+1));
+             if(vptr+1 < vstk.end())
+               vstk.erase(vptr+1);
+           }
+diff -ur golded+.orig/goldlib/gall/gfilutil.h golded+/goldlib/gall/gfilutil.h
+--- golded+.orig/goldlib/gall/gfilutil.h	Mon May 22 19:17:44 2000
++++ golded+/goldlib/gall/gfilutil.h	Sat Aug 30 17:34:38 2003
+@@ -43,6 +43,7 @@
+ #include <io.h>
+ #endif
+ 
++using std::string;
+ 
+ //  ------------------------------------------------------------------M
+ 
+diff -ur golded+.orig/goldlib/gall/gftnall.h golded+/goldlib/gall/gftnall.h
+--- golded+.orig/goldlib/gall/gftnall.h	Fri Feb 25 11:11:58 2000
++++ golded+/goldlib/gall/gftnall.h	Sat Aug 30 17:34:38 2003
+@@ -34,6 +34,8 @@
+ #include <gdefs.h>
+ #include <string>
+ 
++using std::string;
++
+ 
+ //  ------------------------------------------------------------------
+ //  FTN contants
+diff -ur golded+.orig/goldlib/gall/gmsgattr.h golded+/goldlib/gall/gmsgattr.h
+--- golded+.orig/goldlib/gall/gmsgattr.h	Fri Feb 25 11:11:08 2000
++++ golded+/goldlib/gall/gmsgattr.h	Sat Aug 30 17:34:38 2003
+@@ -34,6 +34,8 @@
+ #include <string>
+ #include <gdefs.h>
+ 
++using std::string;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Internal GoldED message attributes
+diff -ur golded+.orig/goldlib/gall/gsearch.h golded+/goldlib/gall/gsearch.h
+--- golded+.orig/goldlib/gall/gsearch.h	Fri Feb 25 11:11:12 2000
++++ golded+/goldlib/gall/gsearch.h	Sat Aug 30 17:34:38 2003
+@@ -32,6 +32,8 @@
+ 
+ #include <string>
+ 
++using std::string;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/goldlib/gall/gsrchmgr.h golded+/goldlib/gall/gsrchmgr.h
+--- golded+.orig/goldlib/gall/gsrchmgr.h	Fri Feb 25 11:11:12 2000
++++ golded+/goldlib/gall/gsrchmgr.h	Sat Aug 30 17:34:38 2003
+@@ -120,7 +120,7 @@
+     areas_all
+   };
+ 
+-  vector<search_item> items;
++  std::vector<search_item> items;
+ 
+   search_direction    direction;
+   search_messages     messages;
+diff -ur golded+.orig/goldlib/gall/gstrall.h golded+/goldlib/gall/gstrall.h
+--- golded+.orig/goldlib/gall/gstrall.h	Thu Mar 23 18:19:54 2000
++++ golded+/goldlib/gall/gstrall.h	Sat Aug 30 17:34:38 2003
+@@ -70,7 +70,7 @@
+ char* strsrep(char* str, const char* search, const char* replace);
+ char* strltrim(char* str);
+ char* strtrim(char* str);
+-string& strtrim(string& p);
++std::string& strtrim(std::string& p);
+ char* struplow(char* str);
+ 
+ char* longdotstr(long num);                               // Convert a long to a dotted string: xxx.xxx.xxx.xxx
+diff -ur golded+.orig/goldlib/gall/gstrarr.h golded+/goldlib/gall/gstrarr.h
+--- golded+.orig/goldlib/gall/gstrarr.h	Fri Feb 25 11:11:12 2000
++++ golded+/goldlib/gall/gstrarr.h	Sat Aug 30 17:34:38 2003
+@@ -39,7 +39,7 @@
+ 
+ //  ------------------------------------------------------------------
+ 
+-typedef vector<string> gstrarray;
++typedef std::vector<std::string> gstrarray;
+ 
+ 
+ //  ------------------------------------------------------------------
+diff -ur golded+.orig/goldlib/gall/gstrutil.cpp golded+/goldlib/gall/gstrutil.cpp
+--- golded+.orig/goldlib/gall/gstrutil.cpp	Thu Mar 23 18:19:54 2000
++++ golded+/goldlib/gall/gstrutil.cpp	Sat Aug 30 17:34:38 2003
+@@ -451,10 +451,10 @@
+ }
+ 
+ 
+-string& strtrim(string& p) {
++std::string& strtrim(std::string& p) {
+ 
+   if(not p.empty()) {
+-    string::iterator trail = p.end();
++    std::string::iterator trail = p.end();
+     while(trail != p.begin() and *(--trail) < '!') {}
+     if(*trail > ' ') trail++;
+     p.erase(trail, p.end());
+diff -ur golded+.orig/goldlib/gall/gtimall.h golded+/goldlib/gall/gtimall.h
+--- golded+.orig/goldlib/gall/gtimall.h	Wed Mar 22 17:55:00 2000
++++ golded+/goldlib/gall/gtimall.h	Sat Aug 30 17:34:38 2003
+@@ -129,9 +129,9 @@
+ #endif
+ 
+ #ifdef __UNIX__
+-inline Clock gclock() { struct tms z; return Clock(times(&z)*10/CLK_TCK); }
++inline Clock gclock() { struct tms z; return Clock(times(&z)*10/CLOCKS_PER_SEC); }
+ #else
+-inline Clock gclock() { return Clock(clock()*10/CLK_TCK); }
++inline Clock gclock() { return Clock(clock()*10/CLOCKS_PER_SEC); }
+ #endif
+ 
+ int str2mon(const char* ptr) __attribute__ ((const));
+diff -ur golded+.orig/goldlib/gall/gutlgrp.h golded+/goldlib/gall/gutlgrp.h
+--- golded+.orig/goldlib/gall/gutlgrp.h	Fri Feb 25 11:11:26 2000
++++ golded+/goldlib/gall/gutlgrp.h	Sat Aug 30 17:34:38 2003
+@@ -34,6 +34,11 @@
+ #include <vector>
+ #include <string>
+ 
++using std::pair;
++using std::multimap;
++using std::vector;
++using std::string;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/goldlib/gall/gwinall.h golded+/goldlib/gall/gwinall.h
+--- golded+.orig/goldlib/gall/gwinall.h	Mon Nov 27 07:15:30 2000
++++ golded+/goldlib/gall/gwinall.h	Sat Aug 30 17:34:38 2003
+@@ -369,7 +369,7 @@
+ int       wopen       (int srow, int scol, int erow, int ecol, int btype, int battr, int wattr, int sbattr=-1, int loattr=-1);
+ inline int wopen_     (int srow, int scol, int vlen, int hlen, int btype, int battr, int wattr, int sbattr=-1, int loattr=-1) { return wopen(srow, scol, srow+vlen-1, scol+hlen-1, btype, battr, wattr, sbattr, loattr); }
+ int       wperror     (const char* message);
+-bool      wpickfile   (int srow, int scol, int erow, int ecol, int btype, int bordattr, int winattr, int barattr, bool title, string &filespec, VfvCP open, bool casesens=false);
++bool      wpickfile   (int srow, int scol, int erow, int ecol, int btype, int bordattr, int winattr, int barattr, bool title, std::string &filespec, VfvCP open, bool casesens=false);
+ int       wpickstr    (int srow, int scol, int erow, int ecol, int btype, int bordattr, int winattr, int barattr, char* strarr[], int initelem, VfvCP open);
+ int       wprintc     (int wrow, int wcol, int attr, vchar ch);
+ int       wprintf     (const char* format, ...) __attribute__ ((format (printf, 1, 2)));
+diff -ur golded+.orig/goldlib/gall/gwindow.h golded+/goldlib/gall/gwindow.h
+--- golded+.orig/goldlib/gall/gwindow.h	Mon Nov  6 15:26:34 2000
++++ golded+/goldlib/gall/gwindow.h	Sat Aug 30 17:34:38 2003
+@@ -37,6 +37,8 @@
+ #undef getc
+ #undef putc
+ 
++using std::string;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/goldlib/gcfg/gedacfg.cpp golded+/goldlib/gcfg/gedacfg.cpp
+--- golded+.orig/goldlib/gcfg/gedacfg.cpp	Sat Oct  7 01:16:10 2000
++++ golded+/goldlib/gcfg/gedacfg.cpp	Sat Aug 30 17:34:38 2003
+@@ -263,7 +263,7 @@
+     setvbuf(fp, NULL, _IOFBF, 8192);
+ 
+     if(not quiet)
+-      cout << "* Reading " << areafile << endl;
++      std::cout << "* Reading " << areafile << std::endl;
+ 
+     bool firstline = true;
+ 
+diff -ur golded+.orig/goldlib/gcfg/gs_opus.h golded+/goldlib/gcfg/gs_opus.h
+--- golded+.orig/goldlib/gcfg/gs_opus.h	Fri Feb 25 11:12:42 2000
++++ golded+/goldlib/gcfg/gs_opus.h	Sat Aug 30 17:34:38 2003
+@@ -132,15 +132,9 @@
+ #ifndef begin
+ # define begin        {
+ # define end          }
+-//# define true         (-1)
+-# define false        0
+ # define Procedure    void
+ # define shl          <<
+ # define shr          >>
+-# define xor          ^
+-# define and          &&
+-# define or           ||
+-# define not          !
+ # define mod          %
+   typedef unsigned      Bit;
+   typedef unsigned char const * const  STRING;
+diff -ur golded+.orig/goldlib/gcfg/gxcrash.cpp golded+/goldlib/gcfg/gxcrash.cpp
+--- golded+.orig/goldlib/gcfg/gxcrash.cpp	Fri Sep  1 18:23:16 2000
++++ golded+/goldlib/gcfg/gxcrash.cpp	Sat Aug 30 17:34:38 2003
+@@ -97,7 +97,7 @@
+     setvbuf(fp, NULL, _IOFBF, 8192);
+ 
+     if(not quiet)
+-      cout << "* Reading " << file << endl;
++      std::cout << "* Reading " << file << std::endl;
+ 
+     char buf[4000];
+     char key[30];
+diff -ur golded+.orig/goldlib/gcfg/gxdb.cpp golded+/goldlib/gcfg/gxdb.cpp
+--- golded+.orig/goldlib/gcfg/gxdb.cpp	Wed Aug 23 21:24:18 2000
++++ golded+/goldlib/gcfg/gxdb.cpp	Sat Aug 30 17:34:38 2003
+@@ -31,6 +31,9 @@
+ #include <gedacfg.h>
+ #include <gs_db.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Read D'Bridge 1.30
+diff -ur golded+.orig/goldlib/gcfg/gxdutch.cpp golded+/goldlib/gcfg/gxdutch.cpp
+--- golded+.orig/goldlib/gcfg/gxdutch.cpp	Wed Aug 23 21:24:18 2000
++++ golded+/goldlib/gcfg/gxdutch.cpp	Sat Aug 30 17:34:38 2003
+@@ -67,7 +67,7 @@
+     setvbuf(fp, NULL, _IOFBF, 8192);
+ 
+     if(not quiet)
+-      cout << "* Reading " << file << endl;
++      std::cout << "* Reading " << file << std::endl;
+ 
+     while(fgets(buf, 255, fp)) {
+ 
+diff -ur golded+.orig/goldlib/gcfg/gxezy102.cpp golded+/goldlib/gcfg/gxezy102.cpp
+--- golded+.orig/goldlib/gcfg/gxezy102.cpp	Wed Aug 23 21:24:18 2000
++++ golded+/goldlib/gcfg/gxezy102.cpp	Sat Aug 30 17:34:38 2003
+@@ -30,6 +30,9 @@
+ #include <gedacfg.h>
+ #include <gs_ez102.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/goldlib/gcfg/gxezy110.cpp golded+/goldlib/gcfg/gxezy110.cpp
+--- golded+.orig/goldlib/gcfg/gxezy110.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxezy110.cpp	Sat Aug 30 17:34:38 2003
+@@ -31,6 +31,9 @@
+ #include <gedacfg.h>
+ #include <gs_ez110.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/goldlib/gcfg/gxfd.cpp golded+/goldlib/gcfg/gxfd.cpp
+--- golded+.orig/goldlib/gcfg/gxfd.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxfd.cpp	Sat Aug 30 17:34:38 2003
+@@ -31,6 +31,9 @@
+ #include <gedacfg.h>
+ #include <gs_fd.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Read FrontDoor FD.SYS/SETUP.FD and FOLDER.SYS/FOLDER.FD
+diff -ur golded+.orig/goldlib/gcfg/gxfecho6.cpp golded+/goldlib/gcfg/gxfecho6.cpp
+--- golded+.orig/goldlib/gcfg/gxfecho6.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxfecho6.cpp	Sat Aug 30 17:34:38 2003
+@@ -32,6 +32,9 @@
+ #include <gedacfg.h>
+ #include <gs_fech6.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Read FASTECHO.CFG
+diff -ur golded+.orig/goldlib/gcfg/gxfidpcb.cpp golded+/goldlib/gcfg/gxfidpcb.cpp
+--- golded+.orig/goldlib/gcfg/gxfidpcb.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxfidpcb.cpp	Sat Aug 30 17:34:38 2003
+@@ -89,7 +89,7 @@
+     setvbuf(fp, NULL, _IOFBF, 8192);
+ 
+     if(not quiet)
+-      cout << "* Reading " << file << endl;
++      std::cout << "* Reading " << file << std::endl;
+ 
+     int areas = 0;
+     fparea* area = NULL;
+diff -ur golded+.orig/goldlib/gcfg/gxfm116.cpp golded+/goldlib/gcfg/gxfm116.cpp
+--- golded+.orig/goldlib/gcfg/gxfm116.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxfm116.cpp	Sat Aug 30 17:34:38 2003
+@@ -299,7 +299,7 @@
+       else if((ar_rev >= 0x0110) and (ar_rev < 0x0200))
+         ReadFMail116(fp, path, file, options);
+       else
+-        cout << "* Error: Unknown FMail config revision " << setfill('0') << setw(4) << hex << ar_rev << "h - Skipping." << endl;
++        std::cout << "* Error: Unknown FMail config revision " << std::setfill('0') << std::setw(4) << std::hex << ar_rev << "h - Skipping." << std::endl;
+     }
+   }
+ }
+diff -ur golded+.orig/goldlib/gcfg/gxgecho.cpp golded+/goldlib/gcfg/gxgecho.cpp
+--- golded+.orig/goldlib/gcfg/gxgecho.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxgecho.cpp	Sat Aug 30 17:34:38 2003
+@@ -36,6 +36,9 @@
+ 
+ #include <gs_ge120.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Read GEcho AREAFILE.GE and SETUP.GE
+diff -ur golded+.orig/goldlib/gcfg/gxhpt.cpp golded+/goldlib/gcfg/gxhpt.cpp
+--- golded+.orig/goldlib/gcfg/gxhpt.cpp	Mon Nov  6 15:26:34 2000
++++ golded+/goldlib/gcfg/gxhpt.cpp	Sat Aug 30 17:34:38 2003
+@@ -31,6 +31,9 @@
+ #undef GCFG_NOFIDOCONF
+ #include <gedacfg.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/goldlib/gcfg/gximail4.cpp golded+/goldlib/gcfg/gximail4.cpp
+--- golded+.orig/goldlib/gcfg/gximail4.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gximail4.cpp	Sat Aug 30 17:34:38 2003
+@@ -30,6 +30,9 @@
+ #include <gedacfg.h>
+ #include <gs_im160.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Read IMail IMAIL.CF and IMAIL.AR
+diff -ur golded+.orig/goldlib/gcfg/gximail5.cpp golded+/goldlib/gcfg/gximail5.cpp
+--- golded+.orig/goldlib/gcfg/gximail5.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gximail5.cpp	Sat Aug 30 17:34:38 2003
+@@ -40,6 +40,9 @@
+ 
+ #include <gs_im175.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Read IMail IMAIL.CF and IMAIL.AR
+diff -ur golded+.orig/goldlib/gcfg/gximail6.cpp golded+/goldlib/gcfg/gximail6.cpp
+--- golded+.orig/goldlib/gcfg/gximail6.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gximail6.cpp	Sat Aug 30 17:34:38 2003
+@@ -39,6 +39,11 @@
+ #include <gs_im187.h>
+ #endif
+ 
++using std::cout;
++using std::endl;
++using std::setfill;
++using std::setw;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Read IMail IMAIL.CF and IMAIL.AR
+diff -ur golded+.orig/goldlib/gcfg/gxinter.cpp golded+/goldlib/gcfg/gxinter.cpp
+--- golded+.orig/goldlib/gcfg/gxinter.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxinter.cpp	Sat Aug 30 17:34:38 2003
+@@ -32,6 +32,12 @@
+ #include <gedacfg.h>
+ #include <gs_inter.h>
+ 
++using std::cout;
++using std::endl;
++using std::setfill;
++using std::setw;
++using std::hex;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/goldlib/gcfg/gxlora.cpp golded+/goldlib/gcfg/gxlora.cpp
+--- golded+.orig/goldlib/gcfg/gxlora.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxlora.cpp	Sat Aug 30 17:34:38 2003
+@@ -32,6 +32,9 @@
+ #include <gedacfg.h>
+ #include <gs_lo240.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/goldlib/gcfg/gxmax3.cpp golded+/goldlib/gcfg/gxmax3.cpp
+--- golded+.orig/goldlib/gcfg/gxmax3.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxmax3.cpp	Sat Aug 30 17:34:38 2003
+@@ -33,6 +33,9 @@
+ #include <gedacfg.h>
+ #include <gs_max3.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Read areas from Maximus 3.xx
+diff -ur golded+.orig/goldlib/gcfg/gxme2.cpp golded+/goldlib/gcfg/gxme2.cpp
+--- golded+.orig/goldlib/gcfg/gxme2.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxme2.cpp	Sat Aug 30 17:34:38 2003
+@@ -28,6 +28,9 @@
+ #undef GCFG_NOME2
+ #include <gedacfg.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Read AREADESC.ME2 and AREAS.BBS
+diff -ur golded+.orig/goldlib/gcfg/gxopus.cpp golded+/goldlib/gcfg/gxopus.cpp
+--- golded+.orig/goldlib/gcfg/gxopus.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxopus.cpp	Sat Aug 30 17:34:38 2003
+@@ -35,6 +35,9 @@
+ #undef _NORMAL
+ #include <gs_opus.h>    // Structures for Opus 1.1x SYSTEM??.DAT
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Read Opus
+diff -ur golded+.orig/goldlib/gcfg/gxpcb.cpp golded+/goldlib/gcfg/gxpcb.cpp
+--- golded+.orig/goldlib/gcfg/gxpcb.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxpcb.cpp	Sat Aug 30 17:34:38 2003
+@@ -32,6 +32,9 @@
+ #include <gedacfg.h>
+ #include <gs_pcb.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/goldlib/gcfg/gxprobrd.cpp golded+/goldlib/gcfg/gxprobrd.cpp
+--- golded+.orig/goldlib/gcfg/gxprobrd.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxprobrd.cpp	Sat Aug 30 17:34:38 2003
+@@ -31,6 +31,9 @@
+ #include <gedacfg.h>
+ #include <gs_pb200.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/goldlib/gcfg/gxqecho.cpp golded+/goldlib/gcfg/gxqecho.cpp
+--- golded+.orig/goldlib/gcfg/gxqecho.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxqecho.cpp	Sat Aug 30 17:34:38 2003
+@@ -30,6 +30,9 @@
+ #undef GCFG_NOQECHO
+ #include <gedacfg.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/goldlib/gcfg/gxqfront.cpp golded+/goldlib/gcfg/gxqfront.cpp
+--- golded+.orig/goldlib/gcfg/gxqfront.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxqfront.cpp	Sat Aug 30 17:34:38 2003
+@@ -31,6 +31,9 @@
+ #include <gedacfg.h>
+ #include <gs_qfrnt.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/goldlib/gcfg/gxquick.cpp golded+/goldlib/gcfg/gxquick.cpp
+--- golded+.orig/goldlib/gcfg/gxquick.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxquick.cpp	Sat Aug 30 17:34:38 2003
+@@ -31,6 +31,9 @@
+ #include <gedacfg.h>
+ #include <gs_qbbs.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Read QuickBBS 2.60 (old) area config
+diff -ur golded+.orig/goldlib/gcfg/gxra.cpp golded+/goldlib/gcfg/gxra.cpp
+--- golded+.orig/goldlib/gcfg/gxra.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxra.cpp	Sat Aug 30 17:34:38 2003
+@@ -32,6 +32,9 @@
+ #include <gs_ra.h>
+ #include <gs_ra2.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Read RemoteAccess MESSAGES.RA
+diff -ur golded+.orig/goldlib/gcfg/gxraecho.cpp golded+/goldlib/gcfg/gxraecho.cpp
+--- golded+.orig/goldlib/gcfg/gxraecho.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxraecho.cpp	Sat Aug 30 17:34:38 2003
+@@ -30,6 +30,9 @@
+ #include <gedacfg.h>
+ #include <gs_recho.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Read Ra-Echo AREAS.RAE
+diff -ur golded+.orig/goldlib/gcfg/gxsquish.cpp golded+/goldlib/gcfg/gxsquish.cpp
+--- golded+.orig/goldlib/gcfg/gxsquish.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxsquish.cpp	Sat Aug 30 17:34:38 2003
+@@ -30,6 +30,9 @@
+ #undef GCFG_NOSQSH
+ #include <gedacfg.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/goldlib/gcfg/gxsuper.cpp golded+/goldlib/gcfg/gxsuper.cpp
+--- golded+.orig/goldlib/gcfg/gxsuper.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxsuper.cpp	Sat Aug 30 17:34:38 2003
+@@ -31,6 +31,9 @@
+ #include <gedacfg.h>
+ #include <gs_sbbs.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Read SuperBBS
+diff -ur golded+.orig/goldlib/gcfg/gxtimed.cpp golded+/goldlib/gcfg/gxtimed.cpp
+--- golded+.orig/goldlib/gcfg/gxtimed.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxtimed.cpp	Sat Aug 30 17:34:38 2003
+@@ -30,6 +30,9 @@
+ #undef GCFG_NOTIMED
+ #include <gedacfg.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/goldlib/gcfg/gxtmail.cpp golded+/goldlib/gcfg/gxtmail.cpp
+--- golded+.orig/goldlib/gcfg/gxtmail.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxtmail.cpp	Sat Aug 30 17:34:38 2003
+@@ -30,6 +30,9 @@
+ #undef GCFG_NOTERMAIL
+ #include <gedacfg.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/goldlib/gcfg/gxts.cpp golded+/goldlib/gcfg/gxts.cpp
+--- golded+.orig/goldlib/gcfg/gxts.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxts.cpp	Sat Aug 30 17:34:38 2003
+@@ -32,6 +32,9 @@
+ #include <gs_fd.h>      // Structures for FrontDoor fd.sys+folder.sys / setup.fd+folder.fd
+ #include <gs_ts.h>      // Structures for TosScan   areafile.fd
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Read TosScan AREAFILE.FD
+diff -ur golded+.orig/goldlib/gcfg/gxwmail.cpp golded+/goldlib/gcfg/gxwmail.cpp
+--- golded+.orig/goldlib/gcfg/gxwmail.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxwmail.cpp	Sat Aug 30 17:34:38 2003
+@@ -32,6 +32,9 @@
+ #include <gedacfg.h>
+ #include <gs_wmail.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Read areas from WMail 2.2
+diff -ur golded+.orig/goldlib/gcfg/gxwtr.cpp golded+/goldlib/gcfg/gxwtr.cpp
+--- golded+.orig/goldlib/gcfg/gxwtr.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxwtr.cpp	Sat Aug 30 17:34:38 2003
+@@ -31,6 +31,9 @@
+ #include <gedacfg.h>
+ #include <gs_wtr.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ 
+diff -ur golded+.orig/goldlib/gcfg/gxxmail.cpp golded+/goldlib/gcfg/gxxmail.cpp
+--- golded+.orig/goldlib/gcfg/gxxmail.cpp	Wed Aug 23 21:24:20 2000
++++ golded+/goldlib/gcfg/gxxmail.cpp	Sat Aug 30 17:34:38 2003
+@@ -31,6 +31,9 @@
+ #include <gedacfg.h>
+ #include <gs_xmail.h>
+ 
++using std::cout;
++using std::endl;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Clip a long filename to DOS compatible 8 chars
+diff -ur golded+.orig/goldlib/gmb3/gmosqsh2.cpp golded+/goldlib/gmb3/gmosqsh2.cpp
+--- golded+.orig/goldlib/gmb3/gmosqsh2.cpp	Fri Feb 25 11:13:10 2000
++++ golded+/goldlib/gmb3/gmosqsh2.cpp	Sat Aug 30 17:34:38 2003
+@@ -195,7 +195,7 @@
+   // Scan for personal mail
+   if(__scanpm) {
+     int umax = (WidePersonalmail & PM_ALLNAMES) ? WideUsernames : 1;
+-    vector<dword> uhash;
++    std::vector<dword> uhash;
+     for(int uh=0; uh<umax; uh++)
+       uhash.push_back(strHash32(WideUsername[uh]));
+     PMrk->Reset();
+diff -ur golded+.orig/goldnode/goldnode.cpp golded+/goldnode/goldnode.cpp
+--- golded+.orig/goldnode/goldnode.cpp	Fri Feb 25 11:14:28 2000
++++ golded+/goldnode/goldnode.cpp	Sat Aug 30 17:46:27 2003
+@@ -26,6 +26,7 @@
+ 
+ #include <gdbgerr.h>
+ #include <list>
++#include <vector>
+ #include <map>
+ #include <clocale>
+ #include <gdefs.h>
+@@ -49,6 +50,10 @@
+ #include <math.h>
+ #endif
+ 
++using std::list;
++using std::vector;
++using std::map;
++
+ 
+ //  ------------------------------------------------------------------
+ //  Config versions
+diff -ur golded+.orig/rddt/rddt.cpp golded+/rddt/rddt.cpp
+--- golded+.orig/rddt/rddt.cpp	Fri Feb 25 11:10:56 2000
++++ golded+/rddt/rddt.cpp	Sat Aug 30 17:47:59 2003
+@@ -29,10 +29,17 @@
+ #include <iomanip>
+ #include <fstream>
+ #include <list>
++#include <vector>
+ #include <gstrall.h>
+ #include <gstrarr.h>
+ #include <gftnall.h>
+ 
++using std::list;
++using std::vector;
++using std::cout;
++using std::endl;
++using std::ifstream;
++
+ int debug = false;
+ 
+ 
