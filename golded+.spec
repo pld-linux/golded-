@@ -11,7 +11,6 @@ Patch0:		golded-ncurses.patch
 Patch1:		golded-header.patch
 Patch2:		golded-c++.patch
 URL:		http://golded-plus.sourceforge.net/
-BuildRequires:	gcc-c++
 BuildRequires:	libstdc++-devel
 BuildRequires:	ncurses-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -23,13 +22,14 @@ golded - offline message reader for Fidonet and Usenet.
 golded - dzia³aj±cy offline edytor wiadomo¶ci dla Fidonetu i Usenetu.
 
 %prep
-%setup -q -n golded+
+%setup -q -n %{name}
 %patch -p0
 %patch1 -p0
 %patch2 -p1
 
 %build
-%{__make} CC="%{__cc} %{rpmcflags} -Wall"
+%{__make} \
+	CC="%{__cc} %{rpmcflags} -Wall"
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -61,7 +61,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/rddt
 %{_mandir}/man1/*
 %doc docs/*.txt docs/StyleGuide
-%{_libdir}/golded/charset/*
-%{_libdir}/golded/colorset/*
+%dir %{_libdir}/golded
+%{_libdir}/golded/charset
+%{_libdir}/golded/colorset
 %{_libdir}/golded/config*
-%{_libdir}/golded/template/*
+%{_libdir}/golded/template
