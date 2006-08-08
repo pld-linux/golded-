@@ -23,7 +23,7 @@ golded - dzia³aj±cy offline edytor wiadomo¶ci dla Fidonetu i Usenetu.
 
 %prep
 %setup -q -n %{name}
-%patch -p0
+%patch0 -p0
 %patch1 -p0
 %patch2 -p1
 
