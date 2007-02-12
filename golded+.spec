@@ -1,5 +1,5 @@
 Summary:	golded - offline message reader for Fidonet and Usenet
-Summary(pl):	golded - program pocztowy dla Fidonetu i Usenetu
+Summary(pl.UTF-8):   golded - program pocztowy dla Fidonetu i Usenetu
 Name:		golded+
 Version:	1.1.4.7
 Release:	5
@@ -18,8 +18,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 golded - offline message reader for Fidonet and Usenet.
 
-%description -l pl
-golded - dzia≥aj±cy offline edytor wiadomo∂ci dla Fidonetu i Usenetu.
+%description -l pl.UTF-8
+golded - dzia≈ÇajƒÖcy offline edytor wiadomo≈õci dla Fidonetu i Usenetu.
 
 %prep
 %setup -q -n %{name}
